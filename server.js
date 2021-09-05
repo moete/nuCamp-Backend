@@ -3,11 +3,11 @@ const morgan = require('morgan');
 const campsiteRouter = require('./routes/campsiteRouter');
 const partnerRouter = require('./routes/partnerRouter');
 const promotionRouter = require('./routes/promotionRouter');
-
 const hostname = 'localhost';
 const port = 3000;
-
 const app = express();
+
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
