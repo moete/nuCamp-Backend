@@ -1,5 +1,6 @@
 const express = require('express');
 const campsiteRouter = express.Router();
+const authenticate = require('../middelwares/authentificate')
 
 campsiteRouter.route('/')
     .all((req, res, next) => {
@@ -10,14 +11,14 @@ campsiteRouter.route('/')
     .get((req, res) => {
         res.end('Will send all the campsites to you');
     })
-    .post((req, res) => {
+    .post(authenticate.verifyAdmin,(req, res) => {
         res.end(`Will add the campsite: ${req.body.name} with description: ${req.body.description}`);
     })
     .put((req, res) => {
         res.statusCode = 403;
         res.end('PUT operation not supported on /campsites');
     })
-    .delete((req, res) => {
+    .delete(authenticate.verifyAdmin,(req, res) => {
         res.end('Deleting all campsites');
     });
 
