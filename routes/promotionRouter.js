@@ -17,7 +17,7 @@ promotionRouter.route('/promotions')
             res.json(partner);
         })
     })
-    .post(authenticate.verifyAdmin, (req, res) => {
+    .post(authentificate.verifyAdmin, (req, res) => {
         Promotion.create(req.body)
             .then()(partner => {
                 res.statusCode = 200;
@@ -30,7 +30,7 @@ promotionRouter.route('/promotions')
         res.statusCode = 403;
         res.end('PUT operation not supported on /promotions');
     })
-    .delete(authenticate.verifyAdmin,(req, res) => {
+    .delete(authentificate.verifyAdmin,(req, res) => {
         Promotion.deleteMany()
         .then(response => {
             res.statusCode = 200; 
@@ -59,7 +59,7 @@ promotionRouter.route('/:promotionId')
     res.statusCode = 403;
     res.end(`POST operation not supported on /promotions/${req.params.promotionId}`);
 })
-.put(authenticate.verifyAdmin, (req, res, next) => {
+.put(authentificate.verifyAdmin, (req, res, next) => {
     Promotion.findByIdAndUpdate(req.params.promotionId, {
         $set: req.body
     }, { new: true })
@@ -70,7 +70,7 @@ promotionRouter.route('/:promotionId')
     })
     .catch(err => next(err));
 })
-.delete( authenticate.verifyAdmin, (req, res, next) => {
+.delete( authentificate.verifyAdmin, (req, res, next) => {
     Promotion.findByIdAndDelete(req.params.promotionId)
     .then(response => {
         res.statusCode = 200;
