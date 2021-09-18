@@ -3,6 +3,6 @@ module.exports = {
     'mongoUrl': 'mongodb://localhost:27017/nucampsite',
     'facebook': {
         clientId: '4802499186445784',
-        clientSecret: 'YOUR FACEBOOK APP SECRET HERE'
+        clientSecret: '7f44405a91f54c18f7df6826ebfc6452'
     }
 }
